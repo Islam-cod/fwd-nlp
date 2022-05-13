@@ -9,27 +9,15 @@ module.exports = {
     mode: 'production',
     module: {
         rules: [
-            // TODO 1: Add babel Loader that match js files as development
             {
                 test: '/\.js$/',
                 exclude: /node_modules/,
                 loader: "babel-loader"
             },
-            // TODO 2: Add Loaders for
             {
                 test: /\.scss$/,
                 use: [ "css-loader", "sass-loader", MiniCssExtractPlugin.loader],
             }
-            //    1. converting sass => css
-            //    2. Turns css into commonjs
-            //    3. Extract css into files
-            /* HINT: structure
-        {
-          test: REGEX_TO_MATCH_FILES ex. /\.js$/,
-          exclude: /node_modules/,
-          loader: '',
-        }
-       */
         ]
     },
     plugins: [
