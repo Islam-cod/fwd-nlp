@@ -20,14 +20,6 @@ const post = async (url = "", data = {}) => {
 };
 
 const handleSubmit = async () => {
-/* TODO
--Get Value of the input for URL
--Check if it's URL or not
-yes
-    send it to the backend
-no
-    show user message it's not a valid URL
-*/
 let formText = document.getElementById('article-url').value
 if (checkUrl(formText)) {
     console.log("URL valid")
