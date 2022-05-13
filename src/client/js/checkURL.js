@@ -1,5 +1,12 @@
 // TODO declare a function to check the url ..
 //  The question now how can i do it. I understand you are very busy mate so here's some hints pick the one you like
+
+function checkUrl(value)
+{
+    var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi
+    var regexp = new RegExp(expression);
+    return regexp.test(value);
+};
 /* HINTS
     1. https://gist.github.com/franciskim/41a959f8e3989254ef5d
     2. https://www.tutorialspoint.com/How-to-validate-URL-address-in-JavaScript
@@ -8,3 +15,4 @@
     5. https://stackoverflow.com/a/5717133/6483379
     6. https://www.npmjs.com/package/valid-url
  */
+export default checkUrl

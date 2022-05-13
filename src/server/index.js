@@ -1,16 +1,31 @@
 // TODO: Configure the environment variables
+const dotenv = require('dotenv');
+dotenv.config();
 
 const mockAPIResponse = require('./mockAPI.js')
 
 const PORT = 8081
 
 // TODO add Configuration to be able to use env variables
-
+const baseURL = 'https://api.meaningcloud.com/sentiment-2.1?'
+const textApi = process.env.API_KEY
+let userInput = []
 
 // TODO: Create an instance for the server
+const express = require('express')
+const bodyParser = require('body-parser')
+const path = require('path');
+//const fetch = require('node-fetch');
+const app = express()
 // TODO: Configure cors to avoid cors-origin issue
+const cors = require("cors")
+app.use(cors());
 // TODO: Configure express to use body-parser as middle-ware.
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json());
 // TODO: Configure express static directory.
+app.use(express.static('dist'))
 
 app.get('/', function (req, res) {
     // res.sendFile('dist/index.html')
@@ -33,6 +48,15 @@ app.get('/', function (req, res) {
        irony : ''
      }
 */
+app.post('/add-url', async function(req, res) {
+    userInput = req.body.url;
+    console.log(`You entered: ${userInput}`);
+    const apiURL = `${baseURL}key=${textApi}&url=${userInput}&lang=en`
+
+    const response = await fetch(apiURL)
+    const data = await response.json()
+    console.log(data)
+    res.send(data) })
 
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
