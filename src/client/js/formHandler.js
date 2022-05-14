@@ -22,7 +22,7 @@ const post = async (url = "", data = {}) => {
 const handleSubmit = async () => {
 let formText = document.getElementById('article-url').value
 if (checkUrl(formText)) {
-    console.log("URL valid")
+    console.log("URL is valid")
     post('http://localhost:8081/add-url', {formText}).then(data => {
         document.getElementById('text').innerHTML = `${data.text}`
         document.getElementById('agreement').innerHTML = `Agreement: ${data.agreement}`
